@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		System.out.println("==프로그램 시작==");
+
 		Scanner sc = new Scanner(System.in);
 
 		int lastArticleId = 0;
@@ -15,12 +16,13 @@ public class Main {
 		while (true) {
 
 			System.out.print("명령어 > ");
-			String command = sc.nextLine();
+			String command = sc.nextLine().trim();
 
 			if (command.length() == 0) {
 				System.out.println("명령어를 입력해주세요");
 				continue;
 			}
+
 			if (command.equals("exit")) {
 				break;
 			}
@@ -29,11 +31,10 @@ public class Main {
 				if (articles.size() == 0) {
 					System.out.println("게시글이 없습니다");
 				} else {
-					System.out.println(" 번호  //  제목 ");
-
-					for (int i = articles.size()- 1; i >= 0; i--) {
+					System.out.println(" 번호  //  제목  ");
+					for (int i = articles.size() - 1; i >= 0; i--) {
 						Article article = articles.get(i);
-						System.out.printf("%d  //  %s  \n", article.id, article.title);
+						System.out.printf("  %d   //   %s  \n", article.id, article.title);
 					}
 				}
 
@@ -49,10 +50,26 @@ public class Main {
 
 				System.out.printf("%d번글이 생성되었습니다\n", id);
 				lastArticleId++;
+
+			} else if (command.startsWith("article detail ")) {
+
+				String[] cmdDiv = command.split(" "); // article detail 1
+
+//				System.out.println(cmdDiv[0]);
+//				System.out.println(cmdDiv[1]);
+//				System.out.println(cmdDiv[2]);
+
+				int id = Integer.parseInt(cmdDiv[2]);
+
+				// article detail 1 => "1" => 1
+
+				System.out.printf("%d번 게시물은 존재하지 않습니다\n", id);
+
 			} else {
 				System.out.println("존재하지 않는 명령어입니다");
 			}
 		}
+
 		System.out.println("==프로그램 끝==");
 
 		sc.close();
