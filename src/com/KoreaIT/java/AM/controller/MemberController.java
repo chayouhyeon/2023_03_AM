@@ -55,7 +55,6 @@ public class MemberController extends Controller {
 	}
 
 	private void doLogin() {
-
 		Member member = null;
 		String loginId = null;
 		String loginPw = null;
@@ -177,5 +176,4 @@ public class MemberController extends Controller {
 		Container.memberDao
 				.add(new Member(3, Util.getNowDateTimeStr(), Util.getNowDateTimeStr(), "test3", "test3", "홍길동"));
 	}
-
 }
